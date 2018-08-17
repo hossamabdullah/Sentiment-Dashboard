@@ -1,7 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, ViewChild} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators/takeWhile' ;
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { SentimentService } from '../../services/Sentiment.service';
 
 
 @Component({
@@ -11,11 +12,16 @@ import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router
 })
 export class DashboardComponent implements OnDestroy {
 
+  @ViewChild("searchForm") searchForm
+  
   private alive = true;
 
-  constructor(private themeService: NbThemeService, private route: ActivatedRoute, private router: Router) {
+  constructor(private themeService: NbThemeService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private sentimentService: SentimentService) {
   }
-
+  
   ngOnDestroy() {
     this.alive = false;
   }
@@ -23,5 +29,11 @@ export class DashboardComponent implements OnDestroy {
   showHistory() {
     this.router.navigate(['/pages/history']);
     //, {relativeTo: this.route}
+  }
+
+  search() {
+    const searchValue = this.searchForm.form.controls.text.value
+    this.sentimentService.currentSearch = searchValue
+    console.log(this.sentimentService)
   }
 }

@@ -5,8 +5,10 @@ import { Http, Headers } from '@angular/http';
     providedIn: 'root'
 })
 export class SentimentService {
-    constructor(private http: Http) {}
+    currentSearch: String
 
+    constructor(private http: Http) {}
+    
     performSentiment(key: String) {
         return this.http.get('http://localhost:3003/sentiment/online?keyword='+key);
     }

@@ -2,12 +2,12 @@
   <div class="col-lg-2"></div>
   <div class="col-lg-8">
     <div class="input-group margin-25">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-append">
-        <button class="btn btn-info input-group-text">
-          Search
-        </button>
-      </span>
+      <form (ngSubmit)="search()" #searchForm="ngForm">
+        <input type="text" class="form-control" placeholder="Search for..." ngModel name="text">
+        <span class="input-group-append">
+          <input type="submit" value="search" class="btn btn-info input-group-text"/>
+        </span>
+      </form>
     </div>
   </div>
   <div class="col-lg-2"></div>
