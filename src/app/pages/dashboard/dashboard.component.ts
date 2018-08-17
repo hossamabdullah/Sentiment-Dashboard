@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, ViewChild} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators/takeWhile' ;
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
@@ -12,7 +12,8 @@ import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router
 export class DashboardComponent implements OnDestroy {
 
   private alive = true;
-
+  @ViewChild('searchForm') searchForm;
+  
   constructor(private themeService: NbThemeService, private route: ActivatedRoute, private router: Router) {
   }
 

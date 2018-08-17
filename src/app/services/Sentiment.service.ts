@@ -5,6 +5,8 @@ import { Http, Headers } from '@angular/http';
     providedIn: 'root'
 })
 export class SentimentService {
+    searchText: String;
+
     constructor(private http: Http) {}
 
     performSentiment(key: String) {
