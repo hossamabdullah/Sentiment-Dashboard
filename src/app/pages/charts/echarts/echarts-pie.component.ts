@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { SentimentService } from '../../../services/Sentiment.service';
 
 @Component({
   selector: 'ngx-echarts-pie',
@@ -7,11 +8,12 @@ import { NbThemeService } from '@nebular/theme';
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class EchartsPieComponent implements AfterViewInit, OnDestroy {
+export class EchartsPieComponent implements AfterViewInit, OnDestroy, OnInit {
+  
   options: any = {};
   themeSubscription: any;
-
-  constructor(private theme: NbThemeService) {
+  
+  constructor(private theme: NbThemeService, private sentimentService: SentimentService) {
   }
 
   ngAfterViewInit() {
