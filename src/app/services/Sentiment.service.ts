@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-@Injectable({
-    providedIn: 'root'
-})
+import {Subject} from 'rxjs/Subject';
+import {SentimentOutput} from '../types/SentimentOutput.model';
+
+
+@Injectable()
 export class SentimentService {
-    currentSearch: String
+    searchText: String;
+    public subject:Subject<any> = new Subject();
+
 
     constructor(private http: Http) {}
     
     performSentiment(key: String) {
-        return this.http.get('http://localhost:3003/sentiment/online?keyword='+key);
+        return this.http.get('http://localhost:3003/sentiment/online?keyword='+key).subscribe(
+            response => {
+                let sentimentOutput = response.json();
+                this.emitSearchDone(sentimentOutput);
+            },
+            error =>{
+                console.log(error)
+            }
+        )
     }
 
 
@@ -19,7 +31,17 @@ export class SentimentService {
     }
 
     getTweets(sentimentId: String){
-        return this.http.get('http://localhost:3003/historyOfSentences?topic='+sentimentId);
+        this.http.get('http://localhost:3003/historyOfSentences?topic='+sentimentId)
+    }
+
+    emitSearchDone(sentimentOutput: SentimentOutput){
+        console.log("aaaa")
+        // let data = {
+        //     Positive: 1548,
+        //     Negative: 335,
+        //     Neural: 310
+        // }
+        this.subject.next(sentimentOutput);
     }
     
 }

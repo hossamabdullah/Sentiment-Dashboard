@@ -15,6 +15,7 @@ export class DashboardComponent implements OnDestroy {
   @ViewChild("searchForm") searchForm
   
   private alive = true;
+  @ViewChild('searchForm') searchForm;
 
   constructor(private themeService: NbThemeService, 
     private route: ActivatedRoute, 
@@ -32,8 +33,9 @@ export class DashboardComponent implements OnDestroy {
   }
 
   search() {
-    const searchValue = this.searchForm.form.controls.text.value
-    this.sentimentService.currentSearch = searchValue
-    console.log(this.sentimentService)
+    const searchText = this.searchForm.form.controls.text.value
+    this.sentimentService.searchText = searchText
+    this.sentimentService.emitSearchDone()
+    console.log(this.sentimentService.searchText)
   }
 }
