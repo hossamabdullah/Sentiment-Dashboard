@@ -13,9 +13,9 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy, OnInit {
   options: any = {};
   themeSubscription: any;
   data: any ={
-    Positive: 200,
-    Negative: 500,
-    Neural: 100
+    positive: 200,
+    negative: 500,
+    neural: 100
   };
   echarts: any;
   colors: any;

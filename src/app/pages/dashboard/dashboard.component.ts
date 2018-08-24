@@ -33,7 +33,7 @@ export class DashboardComponent implements OnDestroy {
   search() {
     const searchText = this.searchForm.form.controls.text.value
     this.sentimentService.searchText = searchText
-    this.sentimentService.emitSearchDone()
+    this.sentimentService.performSentiment(searchText)
     console.log(this.sentimentService.searchText)
   }
 }
