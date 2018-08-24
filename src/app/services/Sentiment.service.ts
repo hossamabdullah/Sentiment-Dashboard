@@ -12,7 +12,7 @@ export class SentimentService {
 
 
     constructor(private http: Http) {}
-
+    
     performSentiment(key: String) {
         return this.http.get('http://127.0.0.1:3003/sentiment/online?keyword='+key).subscribe(
             response => {
