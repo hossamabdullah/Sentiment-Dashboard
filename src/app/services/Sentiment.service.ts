@@ -27,11 +27,11 @@ export class SentimentService {
 
 
     getSentiments(key: String){
-        return this.http.get('http://127.0.0.1:3003/historyOfTopics?topic='+key);
+        return this.http.get('http://127.0.0.1:3003/historyOfTopics?topic='+key)
     }
 
     getTweets(sentimentId: String){
-        this.http.get('http://127.0.0.1:3003/historyOfSentences?topic='+sentimentId)
+        return this.http.get('http://127.0.0.1:3003/historyOfSentences?topic='+sentimentId)
     }
 
     emitSearchDone(sentimentOutput: SentimentOutput){

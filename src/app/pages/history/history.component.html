@@ -12,92 +12,36 @@
   </div>
   <div class="col-lg-2"></div>
 
-  <div class="col-lg-2"></div>
-  <nb-card class="col-lg-8">
-    <nb-card-header>16-8-2018</nb-card-header>
-    <nb-card-body>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="col-lg-12 margin-25">
-            <div _ngcontent-c13="" class="item text-success">
-              <div _ngcontent-c13="" class="color bg-success"></div>
-              <div _ngcontent-c13="">
-                <h5 _ngcontent-c13="" class="text-success">Positive</h5>
-                This topic have good sentiment on twitter.
+  <div *ngFor="let topic of topics" class="col-lg-12" style="display:inherit">
+    <div class="col-sm-2"></div>
+    <nb-card class="col-lg-8">
+      <nb-card-header>{{topic.updateDate}}</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-lg-12 margin-25">
+              <div _ngcontent-c13="" class="item text-success">
+                <div _ngcontent-c13="" class="color bg-success"></div>
+                <div _ngcontent-c13="">
+                  <h5 _ngcontent-c13="" class="text-success">{{topic.sentimentResult}}</h5>
+                  This topic have good sentiment on twitter.
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <hr>
-        <div class="col-lg-12">
-          <ngx-echarts-pie></ngx-echarts-pie>
-        </div>
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2 icon">
-          <i class="nb-arrow-dropright details-link" (click)="show_details();"></i>
-        </div>
-      </div>
-    </nb-card-body>
-  </nb-card>
-  <div class="col-lg-2"></div>
-
-  <div class="col-lg-2"></div>
-  <nb-card class="col-lg-8">
-    <nb-card-header>16-8-2018</nb-card-header>
-    <nb-card-body>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="col-lg-12 margin-25">
-            <div _ngcontent-c13="" class="item text-success">
-              <div _ngcontent-c13="" class="color bg-success"></div>
-              <div _ngcontent-c13="">
-                <h5 _ngcontent-c13="" class="text-success">Positive</h5>
-                This topic have good sentiment on twitter.
-              </div>
-            </div>
+          <hr>
+          <div class="col-lg-12">
+            <ngx-echarts-pie [positive]='topic.goodReviewNum' [negative]='topic.badReviewNum' [neural]='topic.neuralReviewNum'></ngx-echarts-pie>
+          </div>
+          <div class="col-lg-10"></div>
+          <div class="col-lg-2 icon">
+            <i class="nb-arrow-dropright details-link" (click)="show_details(topic);"></i>
           </div>
         </div>
-        <hr>
-        <div class="col-lg-12">
-          <ngx-echarts-pie></ngx-echarts-pie>
-        </div>
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2 icon">
-          <i class="nb-arrow-dropright details-link" (click)="show_details();"></i>
-        </div>
-      </div>
-    </nb-card-body>
-  </nb-card>
-  <div class="col-lg-2"></div>
-
-  <div class="col-lg-2"></div>
-  <nb-card class="col-lg-8">
-    <nb-card-header>16-8-2018</nb-card-header>
-    <nb-card-body>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="col-lg-12 margin-25">
-            <div _ngcontent-c13="" class="item text-success">
-              <div _ngcontent-c13="" class="color bg-success"></div>
-              <div _ngcontent-c13="">
-                <h5 _ngcontent-c13="" class="text-success">Positive</h5>
-                This topic have good sentiment on twitter.
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="col-lg-12">
-          <ngx-echarts-pie></ngx-echarts-pie>
-        </div>
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2 icon">
-          <i class="nb-arrow-dropright details-link" (click)="show_details();"></i>
-        </div>
-      </div>
-    </nb-card-body>
-  </nb-card>
-  <div class="col-lg-2"></div>
+      </nb-card-body>
+    </nb-card>
+    <div class="col-lg-2"></div>
+  </div>
 </div>
 
 
