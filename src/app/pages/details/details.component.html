@@ -47,7 +47,7 @@
   <nb-card class="col-lg-12" *ngFor="let tweet of tweets">
     <nb-card-header class="text-success"
           [class.text-success]="tweet.sentiment=='POSITIVE'"
-          [class.text-info]="tweet.sentiment=='NEURAL'"
+          [class.text-info]="tweet.sentiment=='NEUTRAL'"
           [class.text-danger]="tweet.sentiment=='NEGATIVE'"
           >{{tweet.sentiment}}</nb-card-header>
     <nb-card-body>
