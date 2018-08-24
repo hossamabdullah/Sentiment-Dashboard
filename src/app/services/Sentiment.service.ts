@@ -14,7 +14,7 @@ export class SentimentService {
     constructor(private http: Http) {}
     
     performSentiment(key: String) {
-        return this.http.get('http://localhost:3003/sentiment/online?keyword='+key).subscribe(
+        return this.http.get('http://127.0.0.1:3003/sentiment/online?keyword='+key).subscribe(
             response => {
                 let sentimentOutput = response.json();
                 this.emitSearchDone(sentimentOutput);
@@ -27,11 +27,11 @@ export class SentimentService {
 
 
     getSentiments(key: String){
-        return this.http.get('http://localhost:3003/historyOfTopics?topic='+key);
+        return this.http.get('http://127.0.0.1:3003/historyOfTopics?topic='+key)
     }
 
     getTweets(sentimentId: String){
-        this.http.get('http://localhost:3003/historyOfSentences?topic='+sentimentId)
+        return this.http.get('http://127.0.0.1:3003/historyOfSentences?topic='+sentimentId)
     }
 
     emitSearchDone(sentimentOutput: SentimentOutput){

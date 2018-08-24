@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { SentimentService } from '../../../services/Sentiment.service';
+import { Topic } from '../../../types/Topic.model';
 
 @Component({
   selector: 'ngx-echarts-pie',
@@ -9,13 +10,21 @@ import { SentimentService } from '../../../services/Sentiment.service';
   `,
 })
 export class EchartsPieComponent implements AfterViewInit, OnDestroy, OnInit {
-  
+  @Input()
+  positive: Number;
+
+  @Input()
+  negative: Number;
+
+  @Input()
+  neural: Number;
+
   options: any = {};
   themeSubscription: any;
   data: any ={
-    Positive: 200,
-    Negative: 500,
-    Neural: 100
+    positive: 200,
+    negative: 500,
+    neural: 100
   };
   echarts: any;
   colors: any;
@@ -24,19 +33,28 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnInit(){
-    this.sentimentService.subject.subscribe(elements => {
-      console.log("bbbbbbbbbb")
-      console.log(elements)
-      this.data = elements
-      this.updateOptions()
-    })
-    
+    console.log("hossssam")
+    console.log(this.positive)
+
+    if(!this.positive){
+      this.sentimentService.subject.subscribe(elements => {
+        console.log("bbbbbbbbbb")
+        console.log(elements)
+        this.data = elements
+        this.updateOptions()
+      })
+    }
   }
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       this.colors = config.variables;
       this.echarts = config.variables.echarts;
+      if(this.positive){
+        this.data.positive = this.positive
+        this.data.negative = this.negative
+        this.data.neural = this.neural
+      }
       this.updateOptions();
     });
   }
