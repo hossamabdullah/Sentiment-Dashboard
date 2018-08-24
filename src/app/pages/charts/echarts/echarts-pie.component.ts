@@ -64,9 +64,9 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy, OnInit {
           radius: '80%',
           center: ['50%', '50%'],
           data: [
-            { value: this.data.Negative, name: 'Negative' },
-            { value: this.data.Neural, name: 'Neural' },
-            { value: this.data.Positive, name: 'Positive' },
+            { value: this.data.negative, name: 'Negative' },
+            { value: this.data.neural, name: 'Neural' },
+            { value: this.data.positive, name: 'Positive' },
           ],
           itemStyle: {
             emphasis: {

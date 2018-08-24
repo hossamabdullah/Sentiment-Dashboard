@@ -1,4 +1,4 @@
-class Sentence{
+export class Sentence{
     sentenceId: String;
     content: String;
     sentiment: String;

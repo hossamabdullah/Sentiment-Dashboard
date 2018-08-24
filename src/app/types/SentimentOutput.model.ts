@@ -1,4 +1,4 @@
-class Output{
+export class SentimentOutput{
     positive: Number;
     negative: Number;
     neural: Number;
