@@ -12,8 +12,6 @@ import { SentimentService } from '../../services/Sentiment.service';
 })
 export class DashboardComponent implements OnDestroy {
 
-  @ViewChild("searchForm") searchForm
-  
   private alive = true;
   @ViewChild('searchForm') searchForm;
 
